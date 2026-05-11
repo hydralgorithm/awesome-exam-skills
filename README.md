@@ -1,30 +1,40 @@
+<div align="center">
+
 # awesome-exam-skills
 
-> A collection of Claude skills for exam preparation and academic intelligence.
+**A curated collection of Claude skills for exam preparation and academic intelligence.**
 
-Each skill is a standalone system prompt you drop into Claude (via Projects, API, or any skill runner) to give it structured, repeatable exam-prep capabilities.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![Skills](https://img.shields.io/badge/skills-1-blue.svg)](#skills)
+
+</div>
 
 ---
+
+Each skill in this repository is a structured system prompt engineered to give Claude repeatable, well-defined exam-prep capabilities. Drop any skill into Claude via Projects, the API, or any compatible skill runner — no setup beyond copy-paste.
 
 ## Skills
 
-| Skill | What it does | Status |
-|-------|-------------|--------|
-| [pyq-analyzer](./skills/pyq-analyzer/) | Turns uploaded PYQ papers into pattern analysis, confidence scores, and a prioritized study plan | ✅ Stable |
+| Skill | Description | Exam Types | Status |
+|-------|-------------|------------|--------|
+| [pyq-analyzer](./skills/pyq-analyzer/) | Analyzes previous year question papers to extract patterns, score confidence, flag anomalies, and produce a prioritized study plan | T1–T5 (all subjects) | ![Stable](https://img.shields.io/badge/status-stable-brightgreen) |
 
-More skills coming. See [ROADMAP.md](./ROADMAP.md).
+> See [ROADMAP.md](./ROADMAP.md) for planned additions.
 
 ---
 
-## How to use any skill
+## Getting Started
 
-### Option 1: Claude.ai Projects (recommended)
+Every skill follows the same installation pattern.
 
-1. Open [claude.ai](https://claude.ai) → create or open a **Project**
+### Claude.ai Projects (recommended)
+
+1. Navigate to [claude.ai](https://claude.ai) and open or create a **Project**
 2. Under **Project Instructions**, paste the full contents of the skill's `SKILL.md`
-3. Start a conversation and follow the skill's usage instructions
+3. Follow the skill-specific usage instructions in its `README.md`
 
-### Option 2: API system prompt
+### API
 
 ```python
 import anthropic
@@ -37,54 +47,69 @@ response = client.messages.create(
     model="claude-sonnet-4-20250514",
     max_tokens=4096,
     system=skill,
-    messages=[
-        {"role": "user", "content": "I've uploaded 5 DBMS PYQ papers. Analyze them."}
-    ]
+    messages=[{"role": "user", "content": "I've uploaded 5 DBMS papers. Analyze them."}]
 )
 ```
 
-### Option 3: Any Claude-compatible skill runner
+### Other Environments
 
-Drop any `SKILL.md` into tools that accept Claude system prompts — agent frameworks, custom UIs, etc.
+Any tool that accepts a Claude system prompt works — agent frameworks, custom UIs, local runners. Drop the `SKILL.md` content in as the system prompt.
 
 ---
 
-## Repository structure
+## Repository Structure
 
 ```
 awesome-exam-skills/
 ├── README.md               ← You are here
-├── CONTRIBUTING.md         ← How to contribute a skill or improvement
-├── ROADMAP.md              ← Planned skills
+├── CONTRIBUTING.md         ← Contribution guidelines
+├── ROADMAP.md              ← Planned skills and proposals
+├── CODE_OF_CONDUCT.md      ← Community standards
 ├── LICENSE
 └── skills/
     └── pyq-analyzer/
-        ├── SKILL.md        ← The skill itself (paste this into Claude)
-        ├── README.md       ← What it does, how to use it, limitations
+        ├── SKILL.md        ← The skill (paste this into Claude)
+        ├── README.md       ← Usage, examples, limitations
         └── examples/
             └── README.md   ← Sample outputs
 ```
 
-As new skills are added, each gets its own folder under `skills/`.
+New skills each get their own folder under `skills/`. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the required structure.
 
 ---
 
-## Philosophy
+## Design Philosophy
 
-These skills are built around one idea: **show raw data, let the student decide.**
+All skills in this repository are built around a single principle:
 
-No skill in this repo will tell you to ignore a topic or guarantee something will appear. They surface patterns, score confidence, and flag anomalies — then get out of the way.
+> **Show raw data. Let the student decide.**
+
+No skill will tell a student to ignore a topic or assert that something will or won't appear. Skills surface historical patterns, quantify confidence, and flag anomalies — then get out of the way. The student makes the call.
 
 ---
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). New skills, edge case reports, and output format improvements are all welcome.
+Contributions are welcome — whether you're reporting an edge case, improving an existing skill, or proposing an entirely new one.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for full guidelines. The short version:
+
+- **Bug reports / edge cases** → open a GitHub issue
+- **Improvements to an existing skill** → fork, edit `SKILL.md`, test on real papers, open a PR
+- **New skill proposals** → open an issue with the `skill-proposal` label before building
 
 ---
 
-## Author
+## License
+
+[MIT](./LICENSE) — use it, fork it, modify it, build on it.
+
+---
+
+<div align="center">
 
 Built by [Abdul Fattah](https://github.com/hydralgorithm) · [LinkedIn](https://linkedin.com/in/im-abdul-fattah)
 
-If this helped you, a ⭐ on the repo goes a long way.
+If this project helped you, consider starring the repository.
+
+</div>
