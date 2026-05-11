@@ -1,4 +1,7 @@
 <div align="center">
+  <img src="https://media3.giphy.com/media/fhAwk4DnqNgw8/giphy.gif" alt="demo" width="300"/>
+</div>
+<div align="center">
 
 # awesome-exam-skills
 
